@@ -27,8 +27,8 @@ const makeRequestCreator = () => {
         return resources[query];
       }
       const res = await axios(query, { cancelToken: cancel.token });
-
-      const result = res.data.results;
+      //console.log(res)
+      const result = res.data.result;
       // Store response
       resources[query] = result;
 

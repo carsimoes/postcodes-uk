@@ -5,9 +5,14 @@ import classes from "./Movies.module.css";
 
 const Movies = ({ list }) => {
   let cards = <h3>Loading...</h3>;
+  
+  // console.log(list[0])
 
-  if (list) {
-    cards = list.map((m, i) => <Movie key={i} item={m} />);
+  let listTemp = [];
+  listTemp.push(list);
+
+  if (listTemp) {
+    cards = listTemp.map((m, i) => <Movie key={i} item={m} />);
   }
 
   return (

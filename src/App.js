@@ -14,10 +14,11 @@ class App extends Component {
   search = async val => {
     this.setState({ loading: true });
     const results = await search(
-      `https://api.themoviedb.org/3/search/movie?query=${val}&api_key=dbc0a6d62448554c27b6167ef7dabb1b`
+      `http://api.postcodes.io/postcodes/${val}`
     );
+    //console.log(results)
     const movies = results;
-
+      
     this.setState({ movies, loading: false });
   };
 
