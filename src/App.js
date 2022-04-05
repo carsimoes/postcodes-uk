@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-
 import { search } from "./utils";
 import PostCodes from "./PostCodes";
+import classes from "./PostCodes.css";
+
 
 class App extends Component {
   state = {
@@ -57,22 +58,22 @@ class App extends Component {
     return temp;
   }
 
-  
   render() {
     return (
       <div>
+      <div id="upright">
         <input
           value={this.state.value}
           onChange={e => this.onChangeHandler(e)}
           placeholder="Type a valid post code"
         />
         {this.renderPostCodes}
-        
-        <div>
-          <p>Search history:</p>
+        </div>  
+        <div id="upleft">
+          <p>The last three records searched:</p>
           <ul>
             {
-              this.renderSearchHistory.map(function(p){
+              this.renderSearchHistory.slice(-3).map(function(p){
                 return <li> {p.postcode} </li>           
               })
             }
