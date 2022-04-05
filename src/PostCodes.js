@@ -1,18 +1,15 @@
 import React from "react";
+import PostCode from "./PostCode";
+import classes from "./PostCodes.module.css";
 
-import Movie from "./Movie";
-import classes from "./Movies.module.css";
-
-const Movies = ({ list }) => {
+const PostCodes = ({ list }) => {
   let cards = <h3>Loading...</h3>;
-  
-  // console.log(list[0])
 
   let listTemp = [];
   listTemp.push(list);
 
   if (listTemp) {
-    cards = listTemp.map((m, i) => <Movie key={i} item={m} />);
+    cards = listTemp.map((m, i) => <PostCode key={i} item={m} />);
   }
 
   return (
@@ -22,4 +19,4 @@ const Movies = ({ list }) => {
   );
 };
 
-export default Movies;
+export default PostCodes;

@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import { search } from "./utils";
-import Movies from "./Movies";
+import PostCodes from "./PostCodes";
 
 class App extends Component {
   state = {
-    movies: null,
+    postcodes: null,
     loading: false,
     value: ""
   };
@@ -16,10 +16,10 @@ class App extends Component {
     const results = await search(
       `http://api.postcodes.io/postcodes/${val}`
     );
-    //console.log(results)
-    const movies = results;
+
+    const postcodes = results;
       
-    this.setState({ movies, loading: false });
+    this.setState({ postcodes, loading: false });
   };
 
   onChangeHandler = async e => {
@@ -27,13 +27,13 @@ class App extends Component {
     this.setState({ value: e.target.value });
   };
 
-  get renderMovies() {
-    let movies = <h1>There's no movies</h1>;
-    if (this.state.movies) {
-      movies = <Movies list={this.state.movies} />;
+  get renderPostCodes() {
+    let postcodes = <h1>Type a valid post code</h1>;
+    if (this.state.postcodes) {
+      postcodes = <PostCodes list={this.state.postcodes} />;
     }
 
-    return movies;
+    return postcodes;
   }
 
   render() {
@@ -44,7 +44,7 @@ class App extends Component {
           onChange={e => this.onChangeHandler(e)}
           placeholder="Type something to search"
         />
-        {this.renderMovies}
+        {this.renderPostCodes}
       </div>
     );
   }
