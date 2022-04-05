@@ -35,8 +35,12 @@ class App extends Component {
       postcodes = <PostCodes list={this.state.postcodes} />;
      
       let postsTemp = [];
+      if(localStorage.getItem('postCodesHistory')==null){
+        localStorage.setItem('postCodesHistory',JSON.stringify(postsTemp)); 
+        alert(  localStorage.getItem('postCodesHistory'))
+      }
 
-      if(JSON.parse(localStorage.getItem('postCodesHistory').length > 0)){
+      if(JSON.parse(localStorage.getItem('postCodesHistory').length > 1)){
         postsTemp = JSON.parse(localStorage.getItem('postCodesHistory'));
         postsTemp.push(this.state.postcodes);
 
@@ -54,7 +58,9 @@ class App extends Component {
   get renderSearchHistory() {
     let temp = [];
     temp = JSON.parse(localStorage.getItem('postCodesHistory'));
-
+    if(temp == undefined){
+      temp = [];
+    }
     return temp;
   }
 
@@ -70,10 +76,10 @@ class App extends Component {
         {this.renderPostCodes}
         </div>  
         <div id="upleft">
-          <p>The last three records searched:</p>
+          <p>The last two records searched:</p>
           <ul>
             {
-              this.renderSearchHistory.slice(-3).map(function(p){
+              this.renderSearchHistory.slice(-2).map(function(p){
                 return <li> {p.postcode} </li>           
               })
             }
