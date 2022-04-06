@@ -12,11 +12,11 @@ Welcome to my projet! I'm Carlos.
 $ npm install
 $ npm start
 ```
-# Project
+## Project
 A react web application that allows you to find the addresses of our customers based on their postcodes.
 
 
-# Source API
+## Source API
 A working example for the web service is: http://api.postcodes.io/postcodes/N76RS
 A few examples of valid postcodes in the UK are:
 
